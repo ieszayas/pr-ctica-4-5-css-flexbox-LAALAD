@@ -1,0 +1,106 @@
+/* General page styles */
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #d486d6;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+footer {
+    background-color: #d486d6;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;    
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    flex: 1;
+}
+
+.main-content div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.main-content div img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query para Móviles (hasta 600px de ancho) */
+@media (max-width: 600px) {
+    .main-content {
+        flex-direction: column;
+        justify-content: center;  /* Centra las imágenes cuando se apilan */
+    }
+
+    .main-content div {
+        width: 100%;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
+/* Media Query para Tabletas (hasta 900px de ancho) */
+@media (min-width: 600px) and (max-width: 900px) {
+    .main-content {
+        flex-direction: row;
+        justify-content: center;  /* Centra las imágenes si no llenan la fila */
+    }
+
+    .main-content div {
+        width: 48%;  /* Las imágenes ocupan el 48% */
+    }
+}
+
+/* Media Query para Escritorios (hasta 1200px de ancho) */
+@media  (min-width: 900px) and (max-width: 1200px) {
+    .main-content {
+        flex-direction: row;
+        justify-content: center;  /* Centra las imágenes si no llenan la fila */
+    }
+
+    .main-content div {
+        width: 30%;  /* Las imágenes ocupan el 30% */
+    }
+}
+
+/* Media Query para Pantallas Grandes (más de 1200px de ancho) */
+@media (min-width: 1200px) {
+    .main-content {
+        flex-direction: row;
+        justify-content: center;  /* Centra las imágenes si no llenan la fila */
+        gap: 30px;
+    }
+
+    .main-content div {
+        width: 22%;  /* Las imágenes ocupan el 22% */
+    }
+}
