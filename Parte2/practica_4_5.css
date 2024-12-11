@@ -1,11 +1,12 @@
 /* General page styles */
 body {
-    font-family: Helvetica, sans-serif;
+    font-family: 'Roboto', Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: #eee9f7;
 }
 
 header {
@@ -13,19 +14,53 @@ header {
     color: white;
     text-align: center;
     padding: 15px;
+
+    background: linear-gradient(270deg, #d486d6, #bb71be, #dc91df);
+    background-size: 600% 600%;
+    animation: gradientMove 8s infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 0;
+    font-size: 1em;
+    color: #f8d7ff;
+    /* Un tono más claro que el fondo */
 }
 
 footer {
     background-color: #d486d6;
-    color: white;
     text-align: center;
     padding: 15px;
     margin-top: auto;
+    margin: 0;
+    font-size: 0.9em;
+    color: #f8d7ff;
+    /* Texto más claro */
 }
 
 .main-content {
     display: flex;
-    flex-wrap: wrap;    
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
@@ -38,9 +73,111 @@ footer {
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
+
+    animation: fadeIn 1s ease-in-out;
 }
 
 .main-content div img {
+    width: 100%;
+    max-width: 300px;
+    /*Evita imagenes muy grandes*/
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-content div img:hover {
+    filter: grayscale(70%);
+    transition: filter 0.3s;
+    cursor: grab;
+    transform: scale(1.05);
+    /* Aumenta ligeramente el tamaño */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Sombra más intensa */
+}
+
+.main-content div img:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+    transition: transform 0.1s, filter 0.1s;
+}
+
+/* Menu styles */
+.menu-container {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.menu-icon {
+    cursor: pointer;
+}
+
+.menu {
+    display: none;  /* El menú está oculto inicialmente */
+    position: absolute;
+    top: 33px;
+    left: 0px;  /* Ajuste la posición del menú */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.menu li {
+    padding: 10px;
+    background-color: #dc91df;
+    border: 1px solid #bb71be;
+    color: white;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Mostrar el menú cuando se pasa el ratón sobre la imagen */
+.menu-container:hover .menu {
+    display: block;
+}
+
+/* Hover effect para los elementos del menú */
+.menu li:hover {
+    background-color: #d486d6;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Filtros */
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.sepia {
+    filter: sepia(100%);
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+/* Imagen en su estado por defecto */
+.editable-image {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -48,11 +185,13 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Media Query para Móviles (hasta 600px de ancho) */
 @media (max-width: 600px) {
     .main-content {
         flex-direction: column;
-        justify-content: center;  /* Centra las imágenes cuando se apilan */
+        justify-content: center;
+        /* Centra las imágenes cuando se apilan */
     }
 
     .main-content div {
@@ -72,23 +211,27 @@ footer {
 @media (min-width: 600px) and (max-width: 900px) {
     .main-content {
         flex-direction: row;
-        justify-content: center;  /* Centra las imágenes si no llenan la fila */
+        justify-content: center;
+        /* Centra las imágenes si no llenan la fila */
     }
 
     .main-content div {
-        width: 48%;  /* Las imágenes ocupan el 48% */
+        width: 48%;
+        /* Las imágenes ocupan el 48% */
     }
 }
 
 /* Media Query para Escritorios (hasta 1200px de ancho) */
-@media  (min-width: 900px) and (max-width: 1200px) {
+@media (min-width: 900px) and (max-width: 1200px) {
     .main-content {
         flex-direction: row;
-        justify-content: center;  /* Centra las imágenes si no llenan la fila */
+        justify-content: center;
+        /* Centra las imágenes si no llenan la fila */
     }
 
     .main-content div {
-        width: 30%;  /* Las imágenes ocupan el 30% */
+        width: 30%;
+        /* Las imágenes ocupan el 30% */
     }
 }
 
@@ -96,11 +239,13 @@ footer {
 @media (min-width: 1200px) {
     .main-content {
         flex-direction: row;
-        justify-content: center;  /* Centra las imágenes si no llenan la fila */
+        justify-content: center;
+        /* Centra las imágenes si no llenan la fila */
         gap: 30px;
     }
 
     .main-content div {
-        width: 22%;  /* Las imágenes ocupan el 22% */
+        width: 22%;
+        /* Las imágenes ocupan el 22% */
     }
 }
