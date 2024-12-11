@@ -1,0 +1,88 @@
+/* General page styles */
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Ensure the body takes up full viewport height */
+}
+
+header {
+    background-color: #d486d6;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    /* Takes remaining space between header and footer */
+    justify-content: space-between;
+    /* Distribute nav, article, and aside across the row */
+    padding: 10px;
+}
+
+nav {
+    background-color: #fff6c3;
+    color: #504a26;
+    padding: 20px;
+    width: 10vw;
+    /* Fixed width for the nav */
+}
+
+article {
+    background-color: #f8eb9f;
+    color: #504a26;
+    padding: 20px;
+    flex: 1;
+    /* Article will take up remaining space in the middle */
+    margin: 0 10px;
+}
+
+aside {
+    background-color: #fff6c3;
+    color: #504a26;
+    padding: 20px;
+    width: 10vw;
+    /* Fixed width for the aside */
+}
+
+footer {
+    background-color: #d486d6;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    /* Push footer to the bottom */
+}
+
+/* Responsive design: Stack elements vertically on small screens */
+@media (max-width: 640px) {
+    .main-content {
+        flex-direction: column;
+        /* Stack nav, article, and aside vertically */
+    }
+
+    nav,
+    article,
+    aside {
+        width: 100%;
+        /* Full width for each section */
+        margin: 10px 0;
+    }
+
+    article {
+        order: 1;
+    }
+
+    nav {
+        order: 2;
+    }
+
+    aside {
+        order: 3;
+    }
+}
